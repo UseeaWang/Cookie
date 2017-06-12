@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oT = document.getElementById("txt");
+			var sVal = getCookie('weiboMsg');
+			if(sVal){
+				oT.value = sVal;
+			};
+			oT.oninput = function(){
+				setCookie('weiboMsg',oT.value,10);
+			};
+		};
+	</script>
+</head>
+<body>
+	<textarea name="" rows="20" cols="50" style="resize: none;" id="txt"></textarea>
+</body>
+</html>

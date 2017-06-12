@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>选项卡</title>
+		<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+			#tab{
+				width: 300px;
+				height: 300px;
+				border: solid 1px;
+				margin: 50px auto;
+			}
+			#tab p{
+				width: 300px;
+				height: 39px;
+				line-height: 39px;
+				border-bottom: solid 1px;
+			}
+			#tab p span{
+				display: block;
+				float: left;
+				width: 100px;
+				height: 39px;
+				text-align: center;
+			}
+			#tab p span.on{
+				background: red;
+			}
+			#tab div{
+				width: 300px;
+				height: 260px;
+				line-height: 260px;
+				text-align: center;
+				display: none;
+			}
+		</style>
+		<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var aBtn = document.getElementById('tab').getElementsByTagName('span');
+				var oDiv = document.getElementById('tab').getElementsByTagName('div');
+				
+				aBtn[getCookie('index')].className = 'on';
+			    oDiv[getCookie('index')].style.display = 'block';
+			    for(var i=0;i<aBtn.length;i++){
+			    	aBtn[i].index=i;
+			    	aBtn[i].onclick=function(){
+			    		for(var i=0;i<aBtn.length;i++){
+			    			aBtn[i].className = '';
+			    			oDiv[i].style.display = 'none';
+			    		}
+			    		setCookie('index',this.index,5);
+			    		aBtn[getCookie('index')].className = 'on';
+			    		oDiv[getCookie('index')].style.display = 'block';
+			    		
+			    	}
+			    }
+			
+			}
+		</script>
+	</head>
+	<body>
+		<div id="tab">
+			<p>
+				<span>A</span>
+				<span>B</span>
+				<span>C</span>
+			</p>
+			<div>A</div>
+			<div>B</div>
+			<div>C</div>
+		</div>
+	</body>
+</html>
